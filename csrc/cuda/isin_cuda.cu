@@ -1,15 +1,15 @@
-#include <ATen/ATen.h>
+#include "isin_cuda.h"
 
-#include <cuda.h>
-#include <cuda_runtime.h>
+#include <ATen/cuda/CUDAContext.h>
 
-#include <stdint.h>
-#include <vector>
+#include "utils.cuh"
+
+#define THREADS 1024
 
 namespace
 {
   template <typename scalar_t>
-  __global__ void is_in_cuda_kernel(
+  __global__ void isin_cuda_kernel(
       const scalar_t *__restrict__ elements,
       const scalar_t *__restrict__ test_elements,
       const bool invert,
@@ -36,11 +36,14 @@ namespace
   }
 } // namespace
 
-at::Tensor is_in_cuda(
+at::Tensor isin_cuda(
     at::Tensor elements,
     at::Tensor test_elements,
     bool invert)
 {
+  CHECK_CUDA(elements);
+  CHECK_CUDA(test_elements);
+  cudaSetDevice(elements.get_device());
 
   const auto N = elements.numel();
 
@@ -48,19 +51,16 @@ at::Tensor is_in_cuda(
   if (invert)
     output.fill_(1);
 
-  int nthreads = 1024;
-  dim3 block(nthreads);
+  dim3 block(THREADS);
   dim3 grid(N);
-  //dim3 block(nthreads, nthreads);
-  //dim3 grid((N + nthreads - 1) / nthreads);
 
-  AT_DISPATCH_ALL_TYPES(elements.type(), "is_in_cuda", ([&] {
-                          is_in_cuda_kernel<scalar_t><<<grid, block>>>(
-                              elements.data<scalar_t>(),
-                              test_elements.data<scalar_t>(),
+  AT_DISPATCH_ALL_TYPES(elements.type(), "isin_cuda", ([&] {
+                          isin_cuda_kernel<scalar_t><<<grid, block>>>(
+                              elements.data_ptr<scalar_t>(),
+                              test_elements.data_ptr<scalar_t>(),
                               invert,
                               test_elements.numel(),
-                              output.data<int>());
+                              output.data_ptr<int>());
                         }));
 
   return output.toType(at::kByte);
