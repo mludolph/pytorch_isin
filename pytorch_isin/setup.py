@@ -6,7 +6,7 @@ __version__ = "0.0.1"
 setup(
     name="torch_isin",
     author="Moritz Ludolph",
-    author_email="moritz.ludolph@tu-dortmund.de",
+    author_email="mail@moritzludolph.de",
     description="Operation like numpy.isin(element, test_elements) for PyTorch",
     version=__version__,
     install_requires=["torch"],
