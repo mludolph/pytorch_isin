@@ -8,6 +8,7 @@ def isin(
     elements: torch.Tensor, test_elements: torch.Tensor, invert: bool = False
 ) -> torch.Tensor:
     """
+    Returns a boolean array of the same shape as `elements` that is `True` where an element of `elements` is in `test_elements` and `False` otherwise.
 
     Args:
         elements (torch.Tensor): The elements which should be tested.
