@@ -31,9 +31,10 @@ $ python setup.py install
 ## Examples
 
 `isin(elements: torch.Tensor, test_elements: torch.Tensor, invert: bool = False)`
-Returns a boolean array of the same shape as element that is True where an element of element is in test_elements and False otherwise.
 
-**Note**: This function is equivalent to computing the element-wise python keyword `isin(a, b)` for each element in the input.
+Returns a boolean array of the same shape as `elements` that is `True` where an element of `elements` is in `test_elements` and `False` otherwise.
+
+**Note**: This function is equivalent to computing the element-wise Python keyword `isin(a, b)` for each element in the input.
 
 ```python
 import torch
