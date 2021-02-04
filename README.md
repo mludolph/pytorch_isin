@@ -1,5 +1,7 @@
 # PyTorch isin()
 
+[![codecov](https://codecov.io/gh/mludolph/pytorch_isin/branch/main/graph/badge.svg?token=JdNA6Sgow4)](https://codecov.io/gh/mludolph/pytorch_isin)
+
 PyTorch extension library bringing the isin() function similar to [numpy.isin()](https://numpy.org/doc/stable/reference/generated/numpy.isin.html) to PyTorch tensors, supporting both CPU and CUDA.
 
 ## Installation
