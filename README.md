@@ -1,6 +1,6 @@
-# PyTorch equivalent for numpy's isin() function
+# PyTorch isin()
 
-This is a just a small PyTorch extension library containing the isin() function similar to [numpy.isin()](https://numpy.org/doc/stable/reference/generated/numpy.isin.html), supporting both CPU and CUDA.
+PyTorch extension library bringing the isin() function similar to [numpy.isin()](https://numpy.org/doc/stable/reference/generated/numpy.isin.html) to PyTorch tensors, supporting both CPU and CUDA.
 
 ## Installation
 
