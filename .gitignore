@@ -13,3 +13,4 @@ alpha/
 *.so
 *.pyd
 *.sh
+*.xml
