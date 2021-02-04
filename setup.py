@@ -79,9 +79,9 @@ setup(
     name="torch_isin",
     version="1.0.2",
     author="Moritz Ludolph",
-    author_email="mail@moritzludolph.dev",
+    author_email="mail@moritzludolph.de",
     url="https://github.com/mludolph/pytoch_isin",
-    description=("PyTorch equivalent for numpy.isin()"),
+    description=("PyTorch function similar to numpy.isin()"),
     keywords=["pytorch", "isin",],
     license="MIT",
     python_requires=">=3.6",
@@ -97,4 +97,3 @@ setup(
     },
     packages=find_packages(),
 )
-

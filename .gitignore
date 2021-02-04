@@ -12,3 +12,4 @@ alpha/
 .coverage
 *.so
 *.pyd
+*.sh
