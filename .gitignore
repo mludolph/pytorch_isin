@@ -11,3 +11,4 @@ alpha/
 *.egg-info/
 .coverage
 *.so
+*.pyd
