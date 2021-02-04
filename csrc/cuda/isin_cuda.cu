@@ -47,7 +47,7 @@ at::Tensor isin_cuda(
 
   const auto N = elements.numel();
 
-  auto output = at::zeros(elements.sizes(), elements.type().toScalarType(at::kInt)); // atomicMax doesn't work for byte
+  auto output = at::zeros(elements.sizes(), elements.options().dtype(at::kInt)); // elements.type().toScalarType(at::kInt)); // atomicMax doesn't work for byte
   if (invert)
     output.fill_(1);
 
